@@ -63,7 +63,7 @@ const HomeScreen = (props: any) => {
       });
   };
 
-  const getMovieByName = (name: String) => {
+  const getMovieByName = (name: string) => {
     callServicesMoviesWithParams(name)
       .then((resp: Movie) => {
         if (resp !== undefined) {
@@ -118,7 +118,7 @@ const HomeScreen = (props: any) => {
           visible={props.route?.params?.openModal ?? false}
           animationType="slide"
           transparent>
-          <View className="w-full mt-3 bg-white rounded-sm h-1/2">
+          <View className="w-full mt-3 bg-white rounded-sm h-1/2 ">
             <TouchableOpacity
               className="items-end justify-center w-full mt-3 mr-3"
               onPress={() => {
@@ -126,12 +126,18 @@ const HomeScreen = (props: any) => {
               }}>
               <Antd name="close" size={30} color={'black'} />
             </TouchableOpacity>
-            <TextInput
-              value={query}
-              onChangeText={e => {
-                setQuery(e);
-              }}
-            />
+            <View className="w-[80%] bg-[#bdbdbdf] h-[40px] border-2 rounded-sm border-slate-500 px-5 items-start">
+              <TextInput
+                placeholder="Buscar..."
+                value={query}
+                onChangeText={e => {
+                  setQuery(e);
+                }}
+                onSubmitEditing={() =>{
+                  getMovieByName(query);
+                }}
+              />
+            </View>
           </View>
         </Modal>
       </View>

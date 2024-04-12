@@ -18,7 +18,7 @@ export const callServiceMovies = async () => {
 };
 
 export const callServicesMoviesWithParams = async (
-  params: Record<string, any>,
+  params: string,
 ) => {
   try {
     const response = await GET(`${URL}movies?q=`, params, headers);

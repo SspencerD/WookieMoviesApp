@@ -4,7 +4,7 @@ import {AxiosRequestConfig, AxiosResponse} from 'axios';
 
 const axios = require('axios').default;
 
-type Params = Record<string, any>;
+type Params = string;
 type Headers = Record<string, any>;
 
 export function GET(
@@ -21,7 +21,7 @@ export function GET(
     ...config,
     responseType: 'json',
   }).then((response: AxiosResponse<any>) => {
-    return response.data || response._response;
+    return response.data;
   });
 }
 
