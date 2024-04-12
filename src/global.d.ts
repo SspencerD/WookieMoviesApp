@@ -5,7 +5,7 @@ export interface Movie {
   director: string;
   genre: string[];
   id: string;
-  imdb_id: number;
+  imdb_rating: number;
   length: string;
   overview: string;
   poster: string;
@@ -13,6 +13,7 @@ export interface Movie {
   slug: string;
   title: string;
 }
+
 export interface ApiResponse {
   movies: Movie[];
 }

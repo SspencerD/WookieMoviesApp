@@ -1,31 +1,44 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
-import {FlatList, Image, Text} from 'react-native';
+import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
+import {Movie} from '../global';
+import {useNavigation} from '@react-navigation/native';
 
 interface HomeCategoriesProps {
-  title?: string;
   data?: any;
+  categoryName: string;
 }
 
 const HomeCategories = (props: HomeCategoriesProps) => {
-  const { data } = props;
+  const {data, categoryName} = props;
+  const navigation = useNavigation();
 
-  console.log('QUE TRAE DATA?: ' , data);
+  const handleItemPress = (item: any) => {
+    navigation.navigate('Details', {movie: item});
+  };
+
   return (
-    <>
-      <Text className="font-openSansSemiBold text-white text-[24]">
-        Categoria
+    <View className=" w-full]">
+      <Text className="text-base text-left text-white font-openSansBold">
+        {categoryName}
       </Text>
       <FlatList
-        data={props.data}
+        className="mb-2"
+        data={data}
         renderItem={({item}) => (
-          <Image
-            className=" w-[100] h-[170] rounded-md object-cover m-2"
-            source={{uri: item.poster}}
-          />
+          <TouchableOpacity
+            onPress={() => {
+              handleItemPress(item);
+            }}>
+            <Image
+              className=" w-[100] h-[170] rounded-md object-cover m-2"
+              source={{uri: item.poster}}
+            />
+          </TouchableOpacity>
         )}
         horizontal
       />
-    </>
+    </View>
   );
 };
 

@@ -7,6 +7,7 @@ import com.facebook.react.defaults.DefaultReactActivityDelegate
 import android.os.Bundle;
 
 
+
 class MainActivity : ReactActivity() {
 
   /**
